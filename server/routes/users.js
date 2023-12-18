@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost/pinterest", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect("mongodb://localhost/pinterest");
 
 // Define User Schema
 const userSchema = new mongoose.Schema({
