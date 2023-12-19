@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost/pinterest");
+mongoose.connect("mongodb://localhost/data-association");
 
 // Define User Schema
 const userSchema = new mongoose.Schema({
