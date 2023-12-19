@@ -19,7 +19,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  posts: [], // Assuming you have a Post model
+  posts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Post",
+    },
+  ], // Assuming you have a Post model
   fullName: {
     type: String,
     required: true,
