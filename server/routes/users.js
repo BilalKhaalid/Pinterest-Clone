@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema({
   posts: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: "Post",
     },
   ], // Assuming you have a Post model
