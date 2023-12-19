@@ -15,11 +15,11 @@ const postSchema = new mongoose.Schema({
     default: [],
   },
   // Assuming you have a User model, linking the post to an author
-  //   author: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "User",
-  //     required: true,
-  //   },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 // Create Post model
