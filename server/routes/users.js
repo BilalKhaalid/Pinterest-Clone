@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const plm = require("passport-local-mongoose");
 
-const mongoURI = "mongodb://localhost:27017";
+const mongoURI = "mongodb://localhost:27017/pinterest";
 
 mongoose.connect(mongoURI);
 
@@ -24,7 +24,6 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
   },
   fullname: {
     type: String,

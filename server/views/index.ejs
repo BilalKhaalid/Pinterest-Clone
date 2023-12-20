@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Pinterest</title>
-    <link rel="stylesheet" href="../public/stylesheets/style.css" />
+    <link rel="stylesheet" href="../stylesheets/style.css" />
   </head>
   <body>
     <div class="container">
@@ -13,15 +13,22 @@
           alt="pin logo"
           class="img1"
         />
-        <p class="header">Log in to see more</p>
+        <p class="header">Register to see more</p>
 
-        <input type="email" placeholder="Email" class="detail" /><br />
-        <input type="password" placeholder="Password" class="detail" />
+        <form id="registrationForm" action="/register" method="post">
+          <input type="text" placeholder="Username" class="detail" name="username" />
+          <input type="email" placeholder="Email" class="detail" name="email" />
+          <input type="password" placeholder="Password" class="detail" name="password" />
+          <input type="text" placeholder="FullName" class="detail" name="fullname" />
+          <button type="submit" class="btn int">Register</button>
+        </form>
+        
+        <br />
 
         <h4>Forgot your password?</h4>
 
-        <button class="btn int">Log in</button>
-        <p class="or">OR</p>
+        <!-- <a href="/register" class="btn int">Register</a> -->
+        <!-- <p class="or">OR</p>
         <button class="btn fbk">
           <i
             class="fab fa-facebook fa-lg"
@@ -41,12 +48,50 @@
           <p>
             By continuing, you agree to Pinterest's
             <b>Terms of Service, Privacy policy.</b>
-          </p>
+          </p> -->
           <hr />
-          <p>Not on Pinterest yet? Sign up</p>
+          <a href="/login" class="anchor"
+            >Already have an account on Pinterest? Login</a
+          >
         </footer>
       </div>
     </div>
-    <div class="upbtn">Sign up</div>
+    
+      <!-- Include this script block at the end of your HTML body -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Find the form by ID
+    const registrationForm = document.getElementById("registrationForm");
+
+    // Add an event listener for form submission
+    registrationForm.addEventListener("submit", async function (event) {
+      // Prevent the default form submission
+      event.preventDefault();
+
+      try {
+        // Fetch options for the registration request
+        const fetchOptions = {
+          method: "POST",
+          body: new FormData(registrationForm),
+          // Add any other necessary headers or configurations
+        };
+
+        // Perform the registration request
+        const response = await fetch("/register", fetchOptions);
+
+        // Check if the registration was successful (you may need to adjust based on your server response)
+        if (response.ok) {
+          console.log("Registration successful");
+          // Redirect to the "/profile" page using client-side routing
+          window.location.href = "/profile";
+        } else {
+          console.error("Registration failed");
+        }
+      } catch (error) {
+        console.error("Registration error:", error);
+      }
+    });
+  });
+    </script>
   </body>
 </html>

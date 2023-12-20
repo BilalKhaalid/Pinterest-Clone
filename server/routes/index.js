@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
-const UserModel = require("../models/users");
+const UserModel = require("./users");
 const passport = require("passport");
 const localStrategy = require("passport-local");
-passport.authenticate(new localStrategy(UserModel.authenticate));
+passport.use(new localStrategy(UserModel.authenticate));
 
 const isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -18,17 +18,28 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/register", async (req, res) => {
-  const { username, email, fullname } = req.body;
-  const userData = new UserModel({
-    username,
-    email,
-    fullname,
-  });
-  UserModel.register(userData, req.body.password).then(() => {
+  try {
+    const { username, email, password, fullname } = req.body;
+    const userData = new UserModel({
+      username,
+      email,
+      password,
+      fullname,
+    });
+    console.log("Register route hit");
+    // ... your registration logic ...
+
+    await UserModel.register(userData, password);
+
+    // If registration is successful, authenticate the user
     passport.authenticate("local")(req, res, () => {
+      console.log("User authenticated");
       res.redirect("/profile");
     });
-  });
+  } catch (error) {
+    console.error("Registration error:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 router.post(
