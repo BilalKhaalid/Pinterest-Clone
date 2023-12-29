@@ -14,6 +14,18 @@ router.get("/profile", isLoggedIn, (req, res) => {
   res.send("profile");
 });
 
+router.get("/feed", isLoggedIn, (req, res) => {
+  res.render("feed");
+});
+
+router.get("/login", (req, res) => {
+  res.render("login");
+});
+
+// router.post("/login", async (req, res) => {
+
+// });
+
 router.post("/register", async (req, res) => {
   const { username, email, fullName } = req.body;
   const userData = new UserModel({ username, email, fullName });
@@ -29,7 +41,7 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/profile",
-    failureRedirect: "/",
+    failureRedirect: "/login",
   }),
   (req, res) => {}
 );
@@ -45,7 +57,7 @@ router.get("/logout", (req, res) => {
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
-  res.redirect("/");
+  res.redirect("/login");
 }
 
 module.exports = router;
