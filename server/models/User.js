@@ -16,10 +16,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
+  password: String,
   posts: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -29,7 +26,7 @@ const userSchema = new mongoose.Schema({
   dp: {
     type: String, // Assuming that the DP (display picture) is a URL or a file path
   },
-  fullname: {
+  fullName: {
     type: String,
   },
 });
