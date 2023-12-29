@@ -163,3 +163,18 @@ hr {
   cursor: pointer;
   background-color: rgb(219, 198, 198);
 }
+
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+span {
+  font-weight: 800;
+  font-size: large;
+  color: Red;
+}
+span:hover {
+  text-decoration: underline;
+  transform: scale(12%);
+}
