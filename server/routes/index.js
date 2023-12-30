@@ -1,8 +1,10 @@
 var express = require("express");
 var router = express.Router();
 const UserModel = require("../models/User");
+const PostModel = require("../models/Post");
 const passport = require("passport");
 const localStrategy = require("passport-local");
+const upload = require("../multer");
 passport.use(new localStrategy(UserModel.authenticate()));
 
 /* GET home page. */
@@ -13,7 +15,7 @@ router.get("/", function (req, res, next) {
 router.get("/profile", isLoggedIn, async (req, res) => {
   const user = await UserModel.findOne({
     username: req.session.passport.user,
-  });
+  }).populate("posts");
   res.render("profile", { user });
 });
 
@@ -53,6 +55,24 @@ router.post(
   }),
   (req, res) => {}
 );
+
+router.post("/upload", isLoggedIn, upload.single("file"), async (req, res) => {
+  if (!req.file) {
+    return res.send("No files were uploaded");
+  } else {
+    const user = await UserModel.findOne({
+      username: req.session.passport.user,
+    });
+    const post = await PostModel.create({
+      image: req.file.filename,
+      imageText: req.body.imageText,
+      user: user._id,
+    });
+    user.posts.push(post._id);
+    await user.save();
+    res.redirect("/profile");
+  }
+});
 
 router.get("/logout", (req, res) => {
   req.logout((err) => {
