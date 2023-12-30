@@ -5,13 +5,7 @@ body {
   padding: 0;
 }
 
-.containery {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.card {
+.profile {
   background-color: #fff;
   border-radius: 5px;
   padding: 20px;
@@ -62,4 +56,16 @@ body {
 
 .button-logout:hover {
   background-color: rgb(202, 25, 25);
+}
+
+.upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
 }
