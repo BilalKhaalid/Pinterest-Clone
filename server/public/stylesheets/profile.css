@@ -1,133 +1,65 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
   margin: 0;
   padding: 0;
 }
-#algn {
-  height: 92vh;
-  min-height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-#card {
-  width: 370px;
-  height: 435px;
-  border: none;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px 0 #e7e9eb, 0 6px 20px 0 #e7e9eb;
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#upper-bg {
-  width: 100%;
-  height: 35%;
-  background-color: #ffe400;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.profile-pic {
-  width: 35%;
-  background-color: white;
-  border: 3px solid #ffe400;
+.profile-picture {
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  padding: 3px;
-  position: absolute;
-  top: 40px;
+  overflow: hidden;
+  margin: 0 auto 20px;
 }
 
-#lower-bg {
+.profile-picture img {
   width: 100%;
-  height: 65%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.text {
-  text-align: center;
-  padding-top: 35px;
-}
-
-.text .name {
-  font-weight: 600;
-  font-size: large;
-  padding: 0;
-  margin: 5px;
-}
-
-.text .title {
-  padding: 0;
+.name {
+  font-size: 24px;
   margin: 0;
-  font-size: 15px;
 }
 
-#icons {
-  display: flex;
-  justify-content: center;
-  margin: 15px;
+.username {
+  font-size: 18px;
+  color: #777;
+  margin: 10px 0;
 }
 
-#icons img {
-  width: 80%;
-  height: 90%;
+.tagline,
+.description {
+  color: #555;
+  margin: 10px 0;
 }
 
-.ico {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-#btn {
-  display: flex;
-  justify-content: center;
-  margin: 15px;
-}
-
-#btn button {
-  margin: 0 20px;
-  padding: 10px 15px;
-  background-color: #ffe400;
-  border: none;
-  border-radius: 50px;
-  font-weight: 700;
-}
-
-#btn button:hover {
-  box-shadow: 0 4px 8px 0 #e7e9eb, 0 6px 20px 0 #e7e9eb;
-}
-
-#l-c-s {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin: 20px 10px;
-}
-
-#l-c-s .num {
-  display: flex;
-}
-
-#l-c-s .dvr {
-  width: 2px;
-  height: 25px;
-  background-color: gray;
-}
-
-#l-c-s img {
-  width: 24px;
-  height: 24px;
-}
-
-.license {
-  font-size: 12px;
-  text-align: center;
-}
-
-.license .ll {
-  padding: 0 10px;
-  display: inline;
+.button:hover {
+  background-color: #0056b3;
 }
