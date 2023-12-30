@@ -10,8 +10,11 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-router.get("/profile", isLoggedIn, (req, res) => {
-  res.render("profile");
+router.get("/profile", isLoggedIn, async (req, res) => {
+  const user = await UserModel.findOne({
+    username: req.session.passport.user,
+  });
+  res.render("profile", { user });
 });
 
 router.get("/feed", isLoggedIn, (req, res) => {
@@ -32,6 +35,13 @@ router.post("/register", async (req, res) => {
       res.redirect("/profile");
     });
   });
+});
+
+router.get("/delete", async (req, res) => {
+  const user = await UserModel.findOneAndDelete({
+    username: req.session.passport.user,
+  });
+  res.send(user).redirect("/");
 });
 
 router.post(
