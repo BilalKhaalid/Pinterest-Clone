@@ -19,12 +19,9 @@ router.get("/feed", isLoggedIn, (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  const error = req.flash("error");
+  res.render("login", { error: error });
 });
-
-// router.post("/login", async (req, res) => {
-
-// });
 
 router.post("/register", async (req, res) => {
   const { username, email, fullName } = req.body;
@@ -42,6 +39,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/profile",
     failureRedirect: "/login",
+    failureFlash: true,
   }),
   (req, res) => {}
 );
