@@ -178,3 +178,9 @@ span:hover {
   text-decoration: underline;
   transform: scale(12%);
 }
+
+.error {
+  font-weight: 600;
+  color: red;
+  text-transform: capitalize;
+}

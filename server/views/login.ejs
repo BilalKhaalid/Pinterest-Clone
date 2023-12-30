@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="../stylesheets/style.css" />
   </head>
   <body>
+    <% if (error.length > 0) { %>
+      <p class="error"><%= error.error %></p>
+    <% } %>
     <div class="container">
       <div class="content">
         <!-- ! pinterest logo-->
@@ -14,6 +17,9 @@
           class="img1"
         />
         <p class="header">Login to see more</p>
+        
+       
+        
 
         <form id="registrationForm" action="/login" method="post">
           <input type="text" placeholder="Username" class="detail" name="username" />
