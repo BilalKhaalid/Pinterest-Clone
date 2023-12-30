@@ -11,7 +11,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/profile", isLoggedIn, (req, res) => {
-  res.send("profile");
+  res.render("profile");
 });
 
 router.get("/feed", isLoggedIn, (req, res) => {
